@@ -1,3 +1,102 @@
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+h2 {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+fieldset {
+    margin: auto 24px;
+    display: flex;
+    justify-content: space-around;
+    border: 0px;
+    border-radius: 12px;
+}
+
+fieldset label {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+fieldset legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 4px;
+    margin: auto
+}
+
+fieldset div {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.charts div {
+    margin: auto 12px;
+}
+
+.charts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+fieldset div label{
+    cursor: pointer;
+}
+
+[type=checkbox] {
+    width: 100%;
+    height: 8px;
+    vertical-align: middle;
+    appearance: none;
+    background-color: #FFFFFF;
+    transition: background 150ms ease-out;
+    cursor: pointer;
+}
+
+#CLT[type=checkbox]:checked {
+    background-color: #1f77b4;
+}
+
+#CQT[type=checkbox]:checked {
+    background-color: #ff7f0e;
+}
+
+#IND[type=checkbox]:checked {
+    background-color: #2ca02c;
+}
+
+#JAX[type=checkbox]:checked {
+    background-color: #d62728;
+}
+
+#MDW[type=checkbox]:checked {
+    background-color: #9467bd;
+}
+
+#PHL[type=checkbox]:checked {
+    background-color: #8c564b;
+}
+
+#PHX[type=checkbox]:checked {
+    background-color: #e377c2;
+}
+
+#KHOU[type=checkbox]:checked {
+    background-color: #7f7f7f;
+}
+
+#KNYC[type=checkbox]:checked {
+    background-color: #bcbd22;
+}
+
+#KSEA[type=checkbox]:checked {
+    background-color: #17becf;
 }
