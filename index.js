@@ -31,19 +31,19 @@ const data = {
 
 function convert_time(d) {
     return {
-        actual_max_temp: d3.mean(d, d => d.actual_max_temp),
-        actual_mean_temp: d3.mean(d, d => d.actual_mean_temp),
-        actual_min_temp: d3.mean(d, d => d.actual_min_temp),
-        actual_precipitation: d3.mean(d, d => d.actual_precipitation),
-        average_max_temp: d3.mean(d, d => d.average_max_temp),
-        average_min_temp: d3.mean(d, d => d.average_min_temp),
-        average_precipitation: d3.mean(d, d => d.average_precipitation),
+        actual_max_temp: d3.median(d, d => d.actual_max_temp),
+        actual_mean_temp: d3.median(d, d => d.actual_mean_temp),
+        actual_min_temp: d3.median(d, d => d.actual_min_temp),
+        actual_precipitation: d3.sum(d, d => d.actual_precipitation),
+        average_max_temp: d3.median(d, d => d.average_max_temp),
+        average_min_temp: d3.median(d, d => d.average_min_temp),
+        average_precipitation: d3.sum(d, d => d.average_precipitation),
         date: d[0].date,
-        record_max_temp: d3.mean(d, d => d.record_max_temp),
-        record_max_temp_year: d3.mean(d, d => d.record_max_temp_year),
-        record_min_temp: d3.mean(d, d => d.record_min_temp),
+        record_max_temp: d3.median(d, d => d.record_max_temp),
+        record_max_temp_year: d3.median(d, d => d.record_max_temp_year),
+        record_min_temp: d3.median(d, d => d.record_min_temp),
         record_min_temp_year: d3.min(d, d => d.record_min_temp_year),
-        record_precipitation: d3.mean(d, d => d.record_precipitation)
+        record_precipitation: d3.sum(d, d => d.record_precipitation)
     };
 }
 
@@ -115,14 +115,15 @@ const colorScale = {
     "KNYC": "#bcbd22",
     "KSEA": "#17becf"
 };
-const margin = { top: 10, right: 10, bottom: 20, left: 25 };
+const margin = { top: 10, right: 25, bottom: 20, left: 35 };
 
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
 const xScale = d3.scaleTime()
     .domain(d3.extent(data["CLT"], d => d.date))
-    .range([0, innerWidth]);
+    .range([0, innerWidth])
+    .nice();
 
 const xAxis = d3.axisBottom(xScale)
     .tickFormat(d3.timeFormat("%b %Y"));
@@ -144,66 +145,108 @@ const tempRangeSVG = d3.select("#temperature-range");
 
 const yScaleTemp = d3.scaleLinear()
     .domain([0, d3.max(data["PHX"], d => d.actual_mean_temp)])
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
 const yScalePerci = d3.scaleLinear()
     .domain([0, d3.max(data["KHOU"], d => d.actual_precipitation)])
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
 const yScaleTempRange = d3.scaleLinear()
     .domain([d3.min(data["CLT"], d => d.record_min_temp), d3.max(data["PHX"], d => d.record_max_temp)])
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
 const yScaleMinTemp = d3.scaleLinear()
     .domain([d3.min(data["IND"], d => d.record_min_temp), d3.max(data["PHX"], d => d.record_min_temp)])
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
 const yScaleMaxTemp = d3.scaleLinear()
     .domain([0, d3.max(data["PHX"], d => d.record_max_temp)])
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
 const yScaleMaxPerci = d3.scaleLinear()
     .domain([0, d3.max(data["KHOU"], d => d.record_precipitation)])
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
-
-
-const TempAxis = d3.axisLeft(yScaleTemp);
-const PerciAxis = d3.axisLeft(yScalePerci);
-const TempRangeAxis = d3.axisLeft(yScaleTempRange);
-const MinTempAxis = d3.axisLeft(yScaleMinTemp);
-const MaxTempAxis = d3.axisLeft(yScaleMaxTemp);
-const MaxPerciAxis = d3.axisLeft(yScaleMaxPerci);
-
-
-
-avgTempSVG.append("g")
-    .call(TempAxis)
+const TempAxis = avgTempSVG.append("g")
+    .call(d3.axisLeft(yScaleTemp).tickFormat(d => `${d}°F`))
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-maxTempSVG.append("g")
-    .call(MaxTempAxis)
+const PerciAxis = avgPerciSVG.append("g")
+    .call(d3.axisLeft(yScalePerci).tickFormat(d => `${d} in`))
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-minTempSVG.append("g")
-    .call(MinTempAxis)
+const TempRangeAxis = tempRangeSVG.append("g")
+    .call(d3.axisLeft(yScaleTempRange).tickFormat(d => `${d}°F`))
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-avgPerciSVG.append("g")
-    .call(PerciAxis)
+const MinTempAxis = minTempSVG.append("g")
+    .call(d3.axisLeft(yScaleMinTemp).tickFormat(d => `${d}°F`))
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-recordPerciSVG.append("g")
-    .call(MaxPerciAxis)
+const MaxTempAxis = maxTempSVG.append("g")
+    .call(d3.axisLeft(yScaleMaxTemp).tickFormat(d => `${d}°F`))
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-tempRangeSVG.append("g")
-    .call(TempRangeAxis)
+const MaxPerciAxis = recordPerciSVG.append("g")
+    .call(d3.axisLeft(yScaleMaxPerci).tickFormat(d => `${d} in`))
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
 
 function lines() {
     const data = data_time[document.querySelector(".time div input:checked").value];
+
+    yScaleTemp.domain([0, d3.max(data["PHX"], d => d.actual_mean_temp)])
+        .nice();
+    TempAxis.transition()
+        .duration(500)
+        .call(d3.axisLeft(yScaleTemp)
+        .tickFormat(d => `${d}°F`));
+
+    yScalePerci.domain([0, d3.max(data["KHOU"], d => d.actual_precipitation)])
+        .nice();
+    PerciAxis
+        .transition()
+        .duration(500)
+        .call(d3.axisLeft(yScalePerci)
+        .tickFormat(d => `${d} in`));
+
+    yScaleTempRange.domain([d3.min(data["CLT"], d => d.record_min_temp), d3.max(data["PHX"], d => d.record_max_temp)])
+        .nice();
+    TempRangeAxis
+        .transition()
+        .duration(500)
+        .call(d3.axisLeft(yScaleTempRange)
+        .tickFormat(d => `${d}°F`));
+
+    yScaleMinTemp.domain([d3.min(data["IND"], d => d.record_min_temp), d3.max(data["PHX"], d => d.record_min_temp)])
+        .nice();
+    MinTempAxis
+        .transition()
+        .duration(500)
+        .call(d3.axisLeft(yScaleMinTemp)
+        .tickFormat(d => `${d}°F`));
+
+    yScaleMaxTemp.domain([0, d3.max(data["PHX"], d => d.record_max_temp)])
+        .nice();
+    MaxTempAxis
+        .transition()
+        .duration(500)
+        .call(d3.axisLeft(yScaleMaxTemp)
+        .tickFormat(d => `${d}°F`));
+        
+    yScaleMaxPerci.domain([0, d3.max(data["KHOU"], d => d.record_precipitation)])
+        .nice();
+    MaxPerciAxis
+        .transition()
+        .duration(500)
+        .call(d3.axisLeft(yScaleMaxPerci)
+        .tickFormat(d => `${d} in`));
+    
     for (const region of document.querySelectorAll(".regions div input:checked")) {
         avgTempSVG.append("path")
             .datum(data[region.value])
