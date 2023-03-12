@@ -25,3 +25,35 @@ A few analytical questions that can be asked with this vis are: how does the tem
 * Compare regional differences in weather
 
 ## Vis
+
+### Controls
+
+A viewer can control which cities are currently displayed on the graphs and they can also control the granularity of the data. The viewer will know which city is selected because each checkbox button shows the color of the line that corresponds to the city. Choosing which city to display also acts as a legend because it shows the colors of the displayed cities.
+
+![image](https://user-images.githubusercontent.com/37636251/224522992-90bbef0b-c1ac-4058-9d76-dac992fd9eec.png)
+
+### Average Temperature
+
+![image](https://user-images.githubusercontent.com/37636251/224523085-ac5e07bf-b776-4cce-aa67-d6fbd79901bc.png)
+
+### Average Precipitation
+
+![image](https://user-images.githubusercontent.com/37636251/224523090-393cd6ba-9804-4934-baec-80842750b760.png)
+
+### Temperature Range
+
+![image](https://user-images.githubusercontent.com/37636251/224523097-d01cc227-c1fd-40f3-ac14-bdbbed791140.png)
+
+### Record Max Temperature
+
+![image](https://user-images.githubusercontent.com/37636251/224523103-3f76cd51-6ac0-4acf-819f-1ce43fc84930.png)
+
+### Record Min Temperature
+
+![image](https://user-images.githubusercontent.com/37636251/224523109-1c62c0cb-ef9c-40b1-8919-be422560f1f3.png)
+
+### Record Precipitation
+
+![image](https://user-images.githubusercontent.com/37636251/224523118-6b9328c7-8b78-4f35-91dc-6e926c766667.png)
+
+
