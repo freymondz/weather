@@ -3,10 +3,16 @@
 Final Deliverable for INFO 474
 
 ## Table of Contents
-
 * [Design Overview](#design-overview)
 * [User Tasks](#user-tasks)
 * [Vis](#vis)
+  * [Controls](#controls)
+  * [Average Temperature](#average-temperature)
+  * [Average Precipitation](#average-precipitation)
+  * [Temperature Range](#temperature-range)
+  * [Record Max Temperature](#record-max-temperature)
+  * [Record Min Temperature](#record-min-temperature)
+  * [Record Precipitation](#record-precipitation)
 
 ## Design Overview
 
@@ -26,6 +32,8 @@ A few analytical questions that can be asked with this vis are: how does the tem
 
 ## Vis
 
+The graphs are seperated to make it easier to look at each graph.
+
 ### Controls
 
 A viewer can control which cities are currently displayed on the graphs and they can also control the granularity of the data. The viewer will know which city is selected because each checkbox button shows the color of the line that corresponds to the city. Choosing which city to display also acts as a legend because it shows the colors of the displayed cities.
@@ -34,26 +42,36 @@ A viewer can control which cities are currently displayed on the graphs and they
 
 ### Average Temperature
 
+The average recorded temperature on that day.
+
 ![image](https://user-images.githubusercontent.com/37636251/224523085-ac5e07bf-b776-4cce-aa67-d6fbd79901bc.png)
 
 ### Average Precipitation
+
+The average recorded precipitation on that day.
 
 ![image](https://user-images.githubusercontent.com/37636251/224523090-393cd6ba-9804-4934-baec-80842750b760.png)
 
 ### Temperature Range
 
+The highest and lowest temperatures recorded on that day.
+
 ![image](https://user-images.githubusercontent.com/37636251/224523097-d01cc227-c1fd-40f3-ac14-bdbbed791140.png)
 
 ### Record Max Temperature
+
+The highest temperature every recorded on that day.
 
 ![image](https://user-images.githubusercontent.com/37636251/224523103-3f76cd51-6ac0-4acf-819f-1ce43fc84930.png)
 
 ### Record Min Temperature
 
+The lowest temperature ever recorded on that day.
+
 ![image](https://user-images.githubusercontent.com/37636251/224523109-1c62c0cb-ef9c-40b1-8919-be422560f1f3.png)
 
 ### Record Precipitation
 
+The highest precipitation ever recorded on that day.
+
 ![image](https://user-images.githubusercontent.com/37636251/224523118-6b9328c7-8b78-4f35-91dc-6e926c766667.png)
-
-
