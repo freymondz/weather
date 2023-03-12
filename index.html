@@ -11,102 +11,106 @@
 </head>
 
 <body>
-    <fieldset class="regions">
-        <legend>Regions</legend>
+    <div class="options">
         <div>
-            <input type="checkbox" id="CLT" name="CLT" value="CLT" checked>
-            <label for="CLT">Charlotte, North Carolina</label>
+            <fieldset class="regions">
+                <legend>Regions</legend>
+                <div>
+                    <input type="checkbox" id="CLT" name="CLT" value="CLT" checked>
+                    <label for="CLT">Charlotte, North Carolina</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="CQT" name="CQT" value="CQT">
+                    <label for="CQT">Los Angeles, California</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="IND" name="IND" value="IND">
+                    <label for="IND">Indianapolis, Indiana</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="JAX" name="JAX" value="JAX">
+                    <label for="JAX">Jacksonville, Florida</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="MDW" name="MDW" value="MDW">
+                    <label for="MDW">Chicago, Illinois</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="PHL" name="PHL" value="PHL">
+                    <label for="PHL">Philadelphia, Pennsylvania</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="PHX" name="PHX" value="PHX">
+                    <label for="PHX">Pheonix, Arizona</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="KHOU" name="KHOU" value="KHOU">
+                    <label for="KHOU">Houston, Texas</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="KNYC" name="KNYC" value="KNYC">
+                    <label for="KNYC">New York, New York</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="KSEA" name="KSEA" value="KSEA">
+                    <label for="KSEA">Seattle, Washington</label>
+                </div>
+            </fieldset>
+            <fieldset class="time">
+                <legend>Time</legend>
+        
+                <div>
+                    <input type="radio" id="daily" name="time" value="day" checked>
+                    <label for="daily">Day</label>
+                </div>
+        
+                <div>
+                    <input type="radio" id="weekly" name="time" value="week">
+                    <label for="weekly">Week</label>
+                </div>
+        
+                <div>
+                    <input type="radio" id="monthly" name="time" value="month">
+                    <label for="monthly">Month</label>
+                </div>
+            </fieldset>
         </div>
-        <div>
-            <input type="checkbox" id="CQT" name="CQT" value="CQT">
-            <label for="CQT">Los Angeles, California</label>
-        </div>
-        <div>
-            <input type="checkbox" id="IND" name="IND" value="IND">
-            <label for="IND">Indianapolis, Indiana</label>
-        </div>
-        <div>
-            <input type="checkbox" id="JAX" name="JAX" value="JAX">
-            <label for="JAX">Jacksonville, Florida</label>
-        </div>
-        <div>
-            <input type="checkbox" id="MDW" name="MDW" value="MDW">
-            <label for="MDW">Chicago, Illinois</label>
-        </div>
-        <div>
-            <input type="checkbox" id="PHL" name="PHL" value="PHL">
-            <label for="PHL">Philadelphia, Pennsylvania</label>
-        </div>
-        <div>
-            <input type="checkbox" id="PHX" name="PHX" value="PHX">
-            <label for="PHX">Pheonix, Arizona</label>
-        </div>
-        <div>
-            <input type="checkbox" id="KHOU" name="KHOU" value="KHOU">
-            <label for="KHOU">Houston, Texas</label>
-        </div>
-        <div>
-            <input type="checkbox" id="KNYC" name="KNYC" value="KNYC">
-            <label for="KNYC">New York, New York</label>
-        </div>
-        <div>
-            <input type="checkbox" id="KSEA" name="KSEA" value="KSEA">
-            <label for="KSEA">Seattle, Washington</label>
-        </div>
-    </fieldset>
-    <fieldset class="time">
-        <legend>Time</legend>
-
-        <div>
-            <input type="radio" id="daily" name="time" value="day" checked>
-            <label for="daily">Day</label>
-        </div>
-
-        <div>
-            <input type="radio" id="weekly" name="time" value="week">
-            <label for="weekly">Week</label>
-        </div>
-
-        <div>
-            <input type="radio" id="monthly" name="time" value="month">
-            <label for="monthly">Month</label>
-        </div>
-    </fieldset>
+    </div>
 
     <div class="charts">
         <div>
             <h2>Average Temperature</h2>
-            <svg id="average-temperature" width="600" height="390">
+            <svg id="average-temperature" width="750" height="280">
 
             </svg>
         </div>
         <div>
             <h2>Average Precipitation</h2>
-            <svg id="average-precipitation" width="600" height="390">
+            <svg id="average-precipitation" width="750" height="280">
 
             </svg>
         </div>
         <div>
             <h2>Temperature Range</h2>
-            <svg id="temperature-range" width="600" height="390">
+            <svg id="temperature-range" width="750" height="280">
 
             </svg>
         </div>
         <div>
             <h2>Record Max Temperature</h2>
-            <svg id="record-max-temperature" width="600" height="390">
+            <svg id="record-max-temperature" width="750" height="280">
 
             </svg>
         </div>
         <div>
             <h2>Record Min Temperature</h2>
-            <svg id="record-min-temperature" width="600" height="390">
+            <svg id="record-min-temperature" width="750" height="280">
 
             </svg>
         </div>
         <div>
             <h2>Record Precipitation</h2>
-            <svg id="record-precipitation" width="600" height="390">
+            <svg id="record-precipitation" width="750" height="280">
 
             </svg>
         </div>
